@@ -4,7 +4,7 @@ const toDoList = document.getElementById("todo-list");
 
 const TODOS_KEY = "todos";
 
-const toDos = [];
+let toDos = [];
 
 function saveToDos() {
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
@@ -40,7 +40,6 @@ function paintToDo(newTodo) {
 function handleToDoSubmit(event) {
     event.preventDefault();
     const newTodo = toDoInput.value;
-
     //form은 submit이벤트를 가지고 그 이벤트는 새로고침하는 이벤트를 막아야함
     // console.log(toDoInput.value);
 
@@ -67,17 +66,11 @@ const savedToDos = localStorage.getItem(TODOS_KEY);
 // console.log(saveToDos);
 if (savedToDos !== null) {
     const parsedToDos = JSON.parse(savedToDos); //savedToDos를 object로 변환
-
     // parsedToDos.forEach(sayHello);
     //parsedToDos가 가지고 있는 각각의 item에 대해서 sayHello라는 함수를 실행시켜줌
-
-    parsedToDos.forEach((item) => console.log("this is th turn of", item));
-
-    //또는
-    // function sayHello(item){
-    //     console.log("this is the turn of", item);
-    // }
+    toDos = parsedToDos;
+    parsedToDos.forEach(paintToDo);
 }
-
-
 //javascript는 array에 있는 각각의 item에 대해 function을 실행할 수 있게 해줌
+
+

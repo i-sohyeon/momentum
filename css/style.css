@@ -30,6 +30,10 @@ img {
     margin-bottom: 10px;
 }
 
+#login-form input[type=text]{
+    color: #000;
+}
+
 #greeting {
     font-size: 36px;
 }
