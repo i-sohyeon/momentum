@@ -32,7 +32,7 @@ function paintToDo(newTodo) {
 
     li.appendChild(span); //li는 span이라는 자식을 가지게 됨.
     li.appendChild(button); //append는 맨 마지막에 놓아져야함
-    span.innerText = newTodo;
+    span.innerText = newTodo.text; //newTodos가 object로 바꼈기 때문에
     // console.log(li);
     toDoList.appendChild(li);
 }
@@ -46,7 +46,13 @@ function handleToDoSubmit(event) {
     //input의 현재 value를 새로운 변수에 복사하는 것
 
     toDoInput.value = ""; //toDoInput의 값을 비우는 코드
-    toDos.push(newTodo);
+    const newToDoObj = {
+        text : newTodo,
+        id : Date.now(),
+        // 이렇게하면 텍스트가 아닌 object를 저장할 수 있음
+    };
+
+    toDos.push(newToDoObj); //데이터베이스로 매번 사용자가 적어둔 text를 push
 
     paintToDo(newTodo); //newToDo 호출 왜 여기서...?
     saveToDos(); //toDos array를 localStorate에 넣어주는 것.
