@@ -1,13 +1,15 @@
-const API_KEY = "https://api.openweathermap.org/data/2.5/weather?lat=37.6017476&lon=127.1095188&appid=39fdbfb2666132512eec30e76a06cc84"
+const weather = document.querySelector("#weather span:first-child");
+const city = document.querySelector("#weather span:last-child");
+const API_KEY = "39fdbfb2666132512eec30e76a06cc84"
 
 function onGeoOk(position) {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
     // console.log("you live in", lat, lng);
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=${API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}`;
    fetch(url).then((response) => response.json())
    .then((data) => {
-       city.innerText = date.name;
+       city.innerText = data.name;
        weather.innerText = `${data.weather[0].main} / ${data.main.temp}`;
    });
 }
