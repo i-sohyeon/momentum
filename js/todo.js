@@ -19,12 +19,19 @@ function deleteToDo(event) {
     //target은 html의 element, parentElement는 element의 부모
     const li = event.target.parentElement;
     li.remove();
+    toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+    //내가 클릭하지 않은 다른li.id todo는 남겨놓는다
+    saveToDos();
 }
 
 function paintToDo(newTodo) {
     // console.log("i will paint", newTodo);
     const li = document.createElement("li");
+    li.id = newTodo.id;
+
     const span = document.createElement("span");
+    span.innerText = newTodo.text;//newTodos가 object로 바꼈기 때문에
+
     const button = document.createElement("button");
     button.innerText = "❌"
     //버튼이 클릭됐음을 확인하기 위함
@@ -32,7 +39,7 @@ function paintToDo(newTodo) {
 
     li.appendChild(span); //li는 span이라는 자식을 가지게 됨.
     li.appendChild(button); //append는 맨 마지막에 놓아져야함
-    span.innerText = newTodo.text; //newTodos가 object로 바꼈기 때문에
+
     // console.log(li);
     toDoList.appendChild(li);
 }
@@ -47,22 +54,22 @@ function handleToDoSubmit(event) {
 
     toDoInput.value = ""; //toDoInput의 값을 비우는 코드
     const newToDoObj = {
-        text : newTodo,
-        id : Date.now(),
+        text: newTodo,
+        id: Date.now(),
         // 이렇게하면 텍스트가 아닌 object를 저장할 수 있음
     };
 
     toDos.push(newToDoObj); //데이터베이스로 매번 사용자가 적어둔 text를 push
 
-    paintToDo(newTodo); //newToDo 호출 왜 여기서...?
+    paintToDo(newToDoObj); //?
     saveToDos(); //toDos array를 localStorate에 넣어주는 것.
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
 
-function sayHello(){
-    console.log("hello");
-}
+// function sayHello() {
+//     console.log("hello");
+// }
 
 //1. toDos를 storage에 저장하기 위해서 array를 변수선언
 //2. newTodo가 그려질때마다 텍스트를 array에 push
@@ -78,5 +85,4 @@ if (savedToDos !== null) {
     parsedToDos.forEach(paintToDo);
 }
 //javascript는 array에 있는 각각의 item에 대해 function을 실행할 수 있게 해줌
-
 
