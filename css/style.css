@@ -90,7 +90,24 @@ input::placeholder {
 }
 
 #weather{
-    position: absolute;
+    position: fixed;
     top: 10px;
-    right: 10px;
+    right: 32px;
+}
+
+#weather span:first-child{
+    font-size: 24px;
+}   
+
+#weather span:first-child::after{
+    display: block;
+    content: "℃";
+    clear:both;
+    position: absolute;
+    right: -25px;
+    top: 0px;
+}
+
+#weather span:last-child{
+    display: block;
 }
