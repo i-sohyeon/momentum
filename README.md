@@ -127,8 +127,8 @@ momentum-clone/
 ## 🚀 Getting Started
 
 ```bash
-git clone [repository-url]
-cd momentum-clone
+git clone [[repository-url]](https://github.com/i-sohyeon/momentum )
+cd momentum
 ```
 
 프로젝트 폴더에서 `index.html`을 실행하면 확인할 수 있습니다.
