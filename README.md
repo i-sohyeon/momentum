@@ -8,7 +8,7 @@
 ## 🔗 Demo & Links
 
 * **Live Demo**: https://i-sohyeon.github.io/momentum/ 
-* **GitHub: https**://github.com/i-sohyeon/momentum 
+* **GitHub:** https://github.com/i-sohyeon/momentum 
 * **Learning Source**: [노마드 코더 - 바닐라 JS로 크롬 앱 만들기](https://nomadcoders.co/javascript-for-beginners)
 
 ---
